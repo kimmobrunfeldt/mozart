@@ -18,7 +18,13 @@ var MusicGenerator = (function(options) {
     //
 
     my.compose = function(text) {
+        var track = [];
 
+        for (var i = 0; i < text.length; i++) {
+            track.push([250 * i, notes[text[i]]]);
+        }
+
+        return track;
     };
 
     //
