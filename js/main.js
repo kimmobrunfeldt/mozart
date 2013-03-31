@@ -8,12 +8,12 @@ require([
   'domready',
   'musicgenerator',
   'player'
-], function(domReady, MusicGenerator, Player) {
+], function(domReady, musicGenerator, player) {
   'use strict';
 
   domReady(function () {
-    var noteList = MusicGenerator.compose('Nekke');
-    Player.playNotes(noteList);
+    var noteList = musicGenerator.compose('Nekke');
+    player.playNotes(noteList);
   });
 
 });
