@@ -9,7 +9,7 @@ define([
       track,
       song;
     notes.forEach(function(note) {
-        Array.prototype.push.apply(noteEvents, MidiEvent.createNote(note));
+        Array.prototype.push.apply(noteEvents, MidiEvent.createNote(note[1]));
     });
     track = new MidiTrack({ events: noteEvents });
     song  = MidiWriter({ tracks: [track] });

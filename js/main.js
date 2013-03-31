@@ -6,12 +6,14 @@ require.config({
 
 require([
   'domready',
+  'musicgenerator',
   'player'
-], function(domReady, Player) {
+], function(domReady, MusicGenerator, Player) {
   'use strict';
 
   domReady(function () {
-    Player.playNotes(['C4', 'E4', 'G4']);
+    var noteList = MusicGenerator.compose('Nekke');
+    Player.playNotes(noteList);
   });
 
 });
