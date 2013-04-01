@@ -29,7 +29,7 @@ define([
         for (var i = 0; i < text.length; i++) {
             var chord = {};
             if (text[i] === " ") {
-                pauseAddition += 500;
+                pauseAddition += 0.5;
             } else {
                 chord.velocity = 127;
                 chord.notes = notes[text[i]];
