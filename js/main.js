@@ -24,7 +24,7 @@ require([
 
   domReady(function () {
     $('#musify').click(function() {
-      var chords = musicGenerator.compose($('#song-textarea'));
+      var chords = musicGenerator.compose($('#song-textarea').val());
       player.playChords(chords);
     });
   });
