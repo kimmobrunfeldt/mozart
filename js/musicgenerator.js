@@ -23,17 +23,18 @@ define([
 
     // Creates a tra
     my.compose = function(text) {
-        var track = [];
+        var track = [],
+            pauseAddition = 0;
 
-        var pauseAddition = 0;
         for (var i = 0; i < text.length; i++) {
             var chord = {};
             if (text[i] === " ") {
-                pauseAddition += 0.5;
+                pauseAddition += 1;
             } else {
-                chord.velocity = 100;
+                chord.str = text[i];
+                chord.velocity = 50;
                 chord.notes = notes[text[i]];
-                chord.delay = 0.25 * i + pauseAddition;
+                chord.delay = 0.4 * i + pauseAddition;
                 track.push(chord);
             }
         }
