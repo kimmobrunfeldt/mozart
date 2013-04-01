@@ -1,12 +1,16 @@
-var MusicGenerator = (function(options) {
+define([
+  'jquery'
+], function($) {
+  'use strict';
 
     var defaultOptions = {
 
     };
+    var options = {};
     options = $.extend(true, {}, defaultOptions, options);
 
     var my = {},
-        notes = {'A': 'B8', 'C': 'D2', 'B': 'B5', 'E': 'Bb8', 'D': 'C8', 'G': 'C1', 'F': 'B2', 'I': 'A3', 'H': 'D9', 'K': 'G7', 'J': 'Bb3', 'M': 'B7', 'L': 'Db9', 'O': 'Bb2', 'N': 'C0', 'Q': 'A5', 'P': 'Bb2', 'S': 'C3', 'R': 'Db8', 'U': 'C7', 'T': 'G2', 'W': 'F8', 'V': 'Eb2', 'Y': 'B7', 'X': 'Ab1', 'Z': 'F5', 'a': 'Db1', 'c': 'E3', 'b': 'Ab7', 'e': 'Db4', 'd': 'D3', 'g': 'Ab0', 'f': 'C0', 'i': 'F9', 'h': 'B3', 'k': 'Eb8', 'j': 'E7', 'm': 'A0', 'l': 'G0', 'o': 'Eb1', 'n': 'Eb2', 'q': 'A5', 'p': 'Ab2', 's': 'A1', 'r': 'D1', 'u': 'Eb4', 't': 'B2', 'w': 'C6', 'v': 'Db2', 'y': 'Db8', 'x': 'Ab6', 'z': 'E9'};
+        notes = {'A': [64, 67, 71], 'C': [57, 60, 64], 'B': [60, 62, 64], 'E': [62, 69, 72], 'D': [62, 69, 72], 'G': [55, 57, 59], 'F': [64, 67, 71], 'I': [64, 67, 71], 'H': [57, 60, 64], 'K': [55, 57, 59], 'J': [62, 66, 69], 'M': [55, 57, 59], 'L': [62, 69, 72], 'O': [62, 69, 72], 'N': [57, 60, 64], 'Q': [62, 69, 72], 'P': [62, 66, 69], 'S': [62, 66, 69], 'R': [62, 66, 69], 'U': [57, 60, 64], 'T': [55, 57, 59], 'W': [55, 57, 59], 'V': [55, 57, 59], 'Y': [60, 62, 64], 'X': [64, 67, 71], 'Z': [60, 62, 64], 'a': [64, 67, 71], 'c': [62, 69, 72], 'b': [62, 66, 69], 'e': [62, 66, 69], 'd': [59, 62, 66], 'g': [60, 62, 64], 'f': [55, 57, 59], 'i': [62, 69, 72], 'h': [55, 57, 59], 'k': [62, 69, 72], 'j': [60, 62, 64], 'm': [59, 62, 66], 'l': [59, 62, 66], 'o': [57, 60, 64], 'n': [57, 60, 64], 'q': [59, 62, 66], 'p': [59, 62, 66], 's': [59, 62, 66], 'r': [59, 62, 66], 'u': [60, 62, 64], 't': [64, 67, 71], 'w': [60, 62, 64], 'v': [55, 57, 59], 'y': [55, 57, 59], 'x': [62, 66, 69], 'z': [59, 62, 66]};
 
 
     function init() {
@@ -17,11 +21,21 @@ var MusicGenerator = (function(options) {
     // Public methods
     //
 
+    // Creates a tra
     my.compose = function(text) {
         var track = [];
 
+        var pauseAddition = 0;
         for (var i = 0; i < text.length; i++) {
-            track.push([250 * i, notes[text[i]]]);
+            var chord = {};
+            if (text[i] === " ") {
+                pauseAddition += 500;
+            } else {
+                chord.velocity = 127;
+                chord.notes = notes[text[i]];
+                chord.delay = 0.25 * 1 + pauseAddition;
+                track.push(chord);
+            }
         }
 
         return track;
