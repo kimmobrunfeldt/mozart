@@ -1,20 +1,16 @@
 define([
   'jquery',
   'midi'
-], function($, Midi) {
+], function($, MIDI) {
   'use strict';
 
-  var playNotes = function(notes) {
-    var noteEvents = [],
-      track,
-      song;
-    notes.forEach(function(note) {
-        Array.prototype.push.apply(noteEvents, MidiEvent.createNote(note[1]));
+  var playChords = function(chords) {
+    MIDI.loadPlugin(function() {
+      chords.forEach(function(chord) {
+        MIDI.chordOn(0, chord.notes, chord.velocity, chord.delay);
+      });
     });
-    track = new MidiTrack({ events: noteEvents });
-    song  = MidiWriter({ tracks: [track] });
-    song.play();
   };
 
-  return { playNotes: playNotes };
+  return { playChords: playChords };
 });
