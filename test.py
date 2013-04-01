@@ -3,7 +3,7 @@
 import random
 import string
 
-notes = {
+chords = {
     "G": [55, 57, 59],
     "Am": [57, 60, 64],
     "Bm": [59, 62, 66],
@@ -13,15 +13,25 @@ notes = {
     "F#dim": [62, 69, 72],
 }
 
+scale = [55, 57, 59, 60, 62, 64, 66, 67]
+
 
 def main():
-    a = {}
+    random.seed(1)
+
+    song_chords = {}
     for char in string.ascii_letters:
+        note = random.choice(chords.keys())
+        song_chords[char] = [x - 12 for x in chords[note]]
 
-        note = random.choice(notes.keys())
-        a[char] = notes[note]
+    print song_chords
 
-    print a
+    song_notes = {}
+    for char in string.ascii_letters:
+        note = random.choice(scale)
+        song_notes[char] = note
+
+    print song_notes
 
 
 if __name__ == '__main__':
