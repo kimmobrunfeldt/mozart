@@ -15,20 +15,18 @@ require.config({
 });
 
 require([
+  'jquery',
   'domready',
   'musicgenerator',
   'player'
-], function(domReady, musicGenerator, player) {
+], function($, domReady, musicGenerator, player) {
   'use strict';
 
   domReady(function () {
-    //var noteList = musicGenerator.compose('Nekke');
-    var chords = [
-      { "delay": 5, "velocity": 127, "notes": [100, 80, 110, 45] },
-      { "delay": 10, "velocity": 127, "notes": [100, 90, 60] },
-      { "delay": 15, "velocity": 127, "notes": [20, 80, 10] }
-    ];
-    player.playChords(chords);
+    $('#musify').click(function() {
+      var chords = musicGenerator.compose($('#song-textarea'));
+      player.playChords(chords);
+    });
   });
 
 });
