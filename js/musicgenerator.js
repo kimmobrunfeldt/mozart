@@ -31,9 +31,9 @@ define([
             if (text[i] === " ") {
                 pauseAddition += 0.5;
             } else {
-                chord.velocity = 127;
+                chord.velocity = 100;
                 chord.notes = notes[text[i]];
-                chord.delay = 0.25 * 1 + pauseAddition;
+                chord.delay = 0.25 * i + pauseAddition;
                 track.push(chord);
             }
         }
