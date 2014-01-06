@@ -1,7 +1,7 @@
 require.config({
   paths: {
     'jquery': '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min',
-    'midi': 'MIDI'
+    'midi': 'midi'
   },
   shim: {
     'base64binary': {
@@ -23,7 +23,7 @@ require([
   'use strict';
 
   domReady(function () {
-    $('#musify').click(function() {
+    $('#compose').click(function() {
       var chords = musicGenerator.compose($('#song-textarea').val());
       player.playChords(chords);
     });

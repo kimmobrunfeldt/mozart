@@ -1,5 +1,7 @@
 body, html {
     background-color: #FFF;
+    background: url('../img/sax-guy.jpg') no-repeat;
+    background-size: cover;
     color: #000;
     font-family: "Lato", Arial;
     margin: 0;
@@ -11,6 +13,7 @@ a {
 }
 
 #playback {
+    color: white;
     margin: 20px 0 0 30px;
     font-size: 30px;
     letter-spacing: 7px;
