@@ -1,4 +1,7 @@
-
+"""
+Creates chords and notes for javascript.
+TODO: Convert to JS..
+"""
 
 import random
 import string
